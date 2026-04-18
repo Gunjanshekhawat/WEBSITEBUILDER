@@ -52,7 +52,7 @@ const Sidebar = ({
       toast.success(data.message)
       setProject(data2.project)
 
-    } catch (error: any) {
+    } catch (error:any) {
       toast.error(error?.response?.data?.message || error.message);
     } finally {
       setIsGenerating(false);
@@ -64,6 +64,7 @@ const Sidebar = ({
               let interval:number|undefined;
               try{
                 setIsGenerating(true);
+                let interval: ReturnType<typeof setInterval>;
                 interval=setInterval(() => {
                   fetchProject();
                 }, 10000)
