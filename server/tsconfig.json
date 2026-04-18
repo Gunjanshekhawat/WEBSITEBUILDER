@@ -15,7 +15,7 @@
     //         "*": ["node_modules/*"]
     //     }
     // },
-    {
+    // {
   "compilerOptions": {
     "target": "ES2020",
     "module": "CommonJS",
@@ -26,8 +26,7 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true
-  }
-}
+  },
     "include": [
         "./**/*.ts"
     ],
