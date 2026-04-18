@@ -6,9 +6,9 @@
         "moduleResolution":"nodenext",
         "outDir": "./dist",
         "rootDir": "./",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
+        "strict": false,
+        "esModuleInterop": false,
+        "skipLibCheck": false,
         "forceConsistentCasingInFileNames": true,
         "baseUrl": ".",
         "paths": {
