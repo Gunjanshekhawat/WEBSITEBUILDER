@@ -28,7 +28,7 @@
     "target": "ES2020",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    
+
     "outDir": "./dist",
     "rootDir": "./",
 
@@ -39,9 +39,7 @@
 
     "skipLibCheck": true,
 
-    "forceConsistentCasingInFileNames": true,
-
-    "baseUrl": "."
+    "forceConsistentCasingInFileNames": true
   },
 
   "include": ["**/*.ts"],
