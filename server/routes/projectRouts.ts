@@ -9,7 +9,7 @@ import {
   rollbackToVersion,
   saveProjectCode
 } from '../controllers/projectController.js';
-import prisma from '../lib/prisma.js';
+
 
 const projectRouter = express.Router();
 

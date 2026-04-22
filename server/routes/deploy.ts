@@ -1,5 +1,5 @@
 import express from "express";
-import { deployToNetlify } from "../services/netlify.ts";
+import { deployToNetlify } from "../services/netlify.js";
 
 const router = express.Router();
 
