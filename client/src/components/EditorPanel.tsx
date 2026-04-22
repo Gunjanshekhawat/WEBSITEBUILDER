@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
+import api from '@/configs/axios';
 import { X } from 'lucide-react';
 import React, { useEffect, useState } from 'react'
 interface EditorPanelProps{
@@ -112,12 +113,12 @@ if(!selectedElement || !values) {
 
       try {
         setUploading(true);
-const res = await fetch("http://localhost:3000/api/upload-image", {
+const res = await api.post("api/upload-image", {
   method: "POST",
   body: formData,
 });
 
-const data = await res.json();
+const data = await res.data();
 
 setValues({ ...values, image: data.url || "" });
 onUpdate({ image: data.url || "" });
