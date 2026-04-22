@@ -1,6 +1,6 @@
 import { v2 as cloudinary } from "cloudinary";
 
-export const uploadImage = async (req, res) => {
+export const uploadImage = async (req:any, res:any) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: "No file uploaded" });

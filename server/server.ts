@@ -3,7 +3,7 @@ dotenv.config();
 import express, { Request, Response } from 'express';
 
 import cors from 'cors';
-import { toNodeHandler } from 'better-auth/node';
+import { toNodeHandler } from "better-auth/dist/integrations/node.mjs";
 import { auth } from './lib/auth.js';
 import userRouter from './routes/userRoutes.js';
 import projectRouter from './routes/projectRouts.js';
@@ -15,9 +15,11 @@ const port = process.env.PORT||3000;
 const corsOptions = {
   
     origin:process.env.TRUSTED_ORIGINS?.split(',') || [],
+   
     credentials: true
      
 };
+console.log(process.env.TRUSTED_ORIGINS)
 app.use(cors(corsOptions));
 app.post('/api/stripe',express.raw({type: 'application/json'}), stripeWebhook)
 
