@@ -1,48 +1,48 @@
 
-{
-    "compilerOptions": {
-        "target": "ES2020",
-        "module": "nodenext",
-        "moduleResolution":"nodenext",
-        "outDir": "./dist",
-        "rootDir": "./",
-        "strict": true,
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-      
-        "forceConsistentCasingInFileNames": true,
-        "baseUrl": ".",
-        "paths": {
-            "*": ["node_modules/*"]
-        }
-    },
- 
-    "include": [
-        "./**/*.ts"
-    ],
-    "exclude": [
-        "node_modules"
-    ]
-}
 // {
-//   "compilerOptions": {
-//     "target": "ES2020",
-//     "module": "NodeNext",
-//     "moduleResolution": "NodeNext",
-
-//     "outDir": "./dist",
-//     "rootDir": "./",
-
-//     "strict": false,
-
-//     "esModuleInterop": true,
-//     "allowSyntheticDefaultImports": true,
-
-//     "skipLibCheck": true,
+//     "compilerOptions": {
+//         "target": "ES2020",
+//         "module": "nodenext",
+//         "moduleResolution":"nodenext",
+//         "outDir": "./dist",
+//         "rootDir": "./",
+//         "strict": true,
+//         "esModuleInterop": true,
+//         "skipLibCheck": true,
       
-//     "forceConsistentCasingInFileNames": true
-//   },
-
-//   "include": ["**/*.ts"],
-//   "exclude": ["node_modules"]
+//         "forceConsistentCasingInFileNames": true,
+//         "baseUrl": ".",
+//         "paths": {
+//             "*": ["node_modules/*"]
+//         }
+//     },
+ 
+//     "include": [
+//         "./**/*.ts"
+//     ],
+//     "exclude": [
+//         "node_modules"
+//     ]
 // }
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+
+    "outDir": "./dist",
+    "rootDir": "./",
+
+    "strict": false,
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "skipLibCheck": true,
+      
+    "forceConsistentCasingInFileNames": true
+  },
+
+  "include": ["**/*.ts"],
+  "exclude": ["node_modules"]
+}
