@@ -25,10 +25,10 @@ export const auth = betterAuth({
         name: 'auth_session',
         attributes: {
           httpOnly: true,
-          secure: process.env.NODE_ENV === "production",
-          // secure:false,
-          // sameSite:'Lax',
-          sameSite : process.env.NODE_ENV === "production" ? "None" : 'Lax',
+          // secure: process.env.NODE_ENV === "production",
+          secure:true,
+          sameSite:"None",
+          // sameSite : process.env.NODE_ENV === "production" ? "None" : 'Lax',
           path: '/',  //HOME
         }
       }
