@@ -6,8 +6,10 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
 
+
 function Home() {
   const{data:session}=authClient.useSession()
+  console.log(import.meta.env.VITE_BASEURL)
 
   const navigate=useNavigate()
     const [input, setInput] = useState('')
