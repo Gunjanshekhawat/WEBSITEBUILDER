@@ -4,7 +4,9 @@ export const uploadImage = async (req:any, res:any) => {
   try {
     if (!req.file) {
       return res.status(400).json({ message: "No file uploaded" });
+
     }
+    console.log("FILE:", req.file);
 
     // Upload to Cloudinary
     const result = await cloudinary.uploader.upload(req.file.path);
