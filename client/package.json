@@ -10,7 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@daveyplate/better-auth-ui": "^3.3.15",
+    "@daveyplate/better-auth-ui": "^3.4.0",
     "@fontsource-variable/geist": "^5.2.8",
     "@tailwindcss/vite": "^4.1.18",
     "axios": "^1.14.0",

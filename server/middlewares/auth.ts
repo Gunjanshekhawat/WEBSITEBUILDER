@@ -3,11 +3,12 @@ import { auth } from '../lib/auth.js'
 import { fromNodeHeaders } from 'better-auth/node'
 
 export const protect = async (req: Request, res: Response, next: NextFunction) => {
+    console.log("headers:", req.headers);
     try {
         const session = await auth.api.getSession({
             headers: fromNodeHeaders(req.headers)
         })
-        console.log("headers:", req.headers);
+        
        
 
         if (!session || !session?.user) {
