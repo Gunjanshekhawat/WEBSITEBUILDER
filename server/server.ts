@@ -13,6 +13,9 @@ import uploadRoutes from "./routes/uploadRoutes.js";
 import deployRoutes from "./routes/deploy.js";
 import { stripeWebhook } from "./controllers/stripeWebhook.js";
 const app = express();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const port = process.env.PORT||3000;
 const corsOptions = {
   
@@ -52,10 +55,14 @@ app.use("/api/deploy", deployRoutes);
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
-// const __filename = fileURLToPath(import.meta.url);
-// const __dirname = path.dirname(__filename);
-// app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// app.use((req, res) => {
-//   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-// });
+// API routes
+
+
+// serve frontend
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+// SPA fallback
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+});
