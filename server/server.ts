@@ -23,7 +23,7 @@ const corsOptions = {
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
+const distPath = path.join(process.cwd(), "client", "dist");
 
 
 const port = process.env.PORT||3000;
@@ -45,7 +45,7 @@ app.use('/api/user',userRouter);
 app.use('/api/project',projectRouter);
 app.use("/api", uploadRoutes);
 app.use("/api/deploy", deployRoutes);
-const distPath = path.join(process.cwd(), "client", "dist");
+
 
 app.use(express.static(distPath));
 
