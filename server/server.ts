@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express, { Request, Response } from 'express';
+import path from "path";
 
 import cors from 'cors';
 import { toNodeHandler } from "better-auth/node";
@@ -49,6 +50,12 @@ app.use("/api", uploadRoutes);
 app.use("/api/deploy", deployRoutes);
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
+});
+const __dirname = path.resolve();
+app.use(express.static(path.join(__dirname, "client/dist")));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "client/dist/index.html"));
 });
 
 
