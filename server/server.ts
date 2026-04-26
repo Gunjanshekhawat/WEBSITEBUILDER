@@ -45,14 +45,17 @@ app.use('/api/user',userRouter);
 app.use('/api/project',projectRouter);
 app.use("/api", uploadRoutes);
 app.use("/api/deploy", deployRoutes);
-const distPath = path.resolve(process.cwd(), "client/dist");
+const distPath = path.join(process.cwd(), "client", "dist");
 
 app.use(express.static(distPath));
 
-app.use((req, res) => {
-  res.sendFile(path.join(distPath, "index.html"));
+// ONLY THIS — no wildcard
+app.use((req, res, next) => {
+  if (req.method === "GET" && !req.url.startsWith("/api")) {
+    return res.sendFile(path.join(distPath, "index.html"));
+  }
+  next();
 });
-
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
