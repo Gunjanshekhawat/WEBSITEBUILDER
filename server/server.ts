@@ -52,10 +52,10 @@ app.use("/api/deploy", deployRoutes);
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-app.use(express.static(path.join(__dirname, "../client/dist")));
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+// app.use(express.static(path.join(__dirname, "../client/dist")));
 
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-});
+// app.use((req, res) => {
+//   res.sendFile(path.join(__dirname, "../client/dist/index.html"));
+// });
