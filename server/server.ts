@@ -13,10 +13,6 @@ import uploadRoutes from "./routes/uploadRoutes.js";
 import deployRoutes from "./routes/deploy.js";
 import { stripeWebhook } from "./controllers/stripeWebhook.js";
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const port = process.env.PORT||3000;
 const corsOptions = {
   
     origin:process.env.TRUSTED_ORIGINS?.split(',') || [],
@@ -24,24 +20,21 @@ const corsOptions = {
     credentials: true
      
 };
-console.log(process.env.TRUSTED_ORIGINS)
 app.use(cors(corsOptions));
-app.post('/api/stripe',express.raw({type: 'application/json'}), stripeWebhook)
-
-
 app.use(express.urlencoded({ extended: true }));
-app.use("/uploads", express.static("uploads"));
 app.use(express.json());
-app.use((req, res, next) => {
-    console.log("🔥 HIT:", req.method, req.url);
-  console.log("BODY:", req.body);
-  console.log("COOKIES:", req.headers.cookie);
-  next();
-});
-app.use((req, res, next) => {
-  console.log("🌍 GLOBAL HIT:", req.method, req.url);
-  next();
-});
+
+
+
+const port = process.env.PORT||3000;
+
+console.log(process.env.TRUSTED_ORIGINS)
+
+app.post('/api/stripe',express.raw({type: 'application/json'}), stripeWebhook)
+app.use("/uploads", express.static("uploads"));
+
+
+
 
 app.use('/api/auth', toNodeHandler(auth));
 
@@ -52,17 +45,15 @@ app.use('/api/user',userRouter);
 app.use('/api/project',projectRouter);
 app.use("/api", uploadRoutes);
 app.use("/api/deploy", deployRoutes);
+const distPath = path.resolve(process.cwd(), "client/dist");
+
+app.use(express.static(distPath));
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(distPath, "index.html"));
+});
+
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
 
-// API routes
-
-
-// serve frontend
-app.use(express.static(path.join(__dirname, "../client/dist")));
-
-// SPA fallback
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
-});
