@@ -51,13 +51,12 @@ app.use("/api/deploy", deployRoutes);
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
-const __dirname = path.resolve();
 app.use(express.static(path.join(__dirname, "client/dist")));
 
-app.get("*", (req, res) => {
+// SPA fallback (SAFE VERSION)
+app.use((req, res) => {
   res.sendFile(path.join(__dirname, "client/dist/index.html"));
 });
-
 
 
 
