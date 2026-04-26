@@ -2,6 +2,7 @@ import dotenv from "dotenv";
 dotenv.config();
 import express, { Request, Response } from 'express';
 import path from "path";
+import { fileURLToPath } from "url";
 
 import cors from 'cors';
 import { toNodeHandler } from "better-auth/node";
@@ -51,12 +52,13 @@ app.use("/api/deploy", deployRoutes);
 app.listen(port, () => {
     console.log(`Server is running at http://localhost:${port}`);
 });
-app.use(express.static(path.join(__dirname, "client/dist")));
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+app.use(express.static(path.join(__dirname, "../client/dist")));
 
-// SPA fallback (SAFE VERSION)
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "client/dist/index.html"));
+// SPA fallback
+app.get("/*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
-
 
 
