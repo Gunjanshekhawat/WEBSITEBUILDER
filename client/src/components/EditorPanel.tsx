@@ -116,7 +116,7 @@ if(!selectedElement || !values) {
 const res = await api.post("api/upload-image", 
 formData);
 
-const data = await res.data();
+const data = await res.data;
 
 setValues({ ...values, image: data.url || "" });
 onUpdate({ image: data.url || "" });
