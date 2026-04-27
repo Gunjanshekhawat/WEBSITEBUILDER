@@ -44,7 +44,7 @@ export const uploadImage = async (req, res) => {
 
     // 💡 यही URL आगे JSON/DB में save करो
     res.json({
-      url: result.secure_url,
+      url: (result as any).secure_url,
     });
 
   } catch (error) {
