@@ -113,10 +113,8 @@ if(!selectedElement || !values) {
 
       try {
         setUploading(true);
-const res = await api.post("api/upload-image", {
-  method: "POST",
-  body: formData,
-});
+const res = await api.post("api/upload-image", 
+formData);
 
 const data = await res.data();
 
