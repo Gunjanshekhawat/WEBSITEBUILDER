@@ -26,6 +26,7 @@ function Projects() {
   const[device,setDevice]=useState<'phone' |'tablet' |'desktop'>("desktop")
   const[isMenuOpen,setIsMenuOpen]=useState(false)
   const[isSaving,setIsSaving]=useState(false)
+  const [showMenu, setShowMenu] = useState(false);
   const previewRef=useRef<ProjectPreviewRef>(null)
   const fetchProject=async()=>{
       
@@ -219,7 +220,7 @@ const handleDeploy = async () => {
           <LaptopIcon onClick={()=>setDevice('desktop')} className={`size-6 p-1 rounded cursor-pointer ${device==='desktop'?"bg-gray-700":""}`}/>
          </div>
          {/* right */}
-          <div className='flex items-center justify-end gap-4 flex-1 text-xs'>
+          <div className=' hidden sm:flex flex items-center justify-end gap-4 flex-1 text-xs'>
 
                    <button onClick={saveProject}  disabled={isSaving} className='bg-gray-800 hover:bg-gray-700 text-white px-3.5 py-1 flex items-center gap-2 rounded sm:rounded-sm transition-colors border border-gray-700'>
                      {isSaving ? <Loader2Icon className='animate-spin' size={16}/>:<SaveIcon  className='hidden sm:block' size={16}/> }  Save
@@ -248,11 +249,11 @@ const handleDeploy = async () => {
     {liveUrl && (
   <div className="flex items-center gap-3 bg-gray-900 border border-gray-700 px-3 py-2 rounded mt-2">
     
-    <a href={liveUrl} target="_blank" rel="noreferrer" className="hidden sm:block text-green-400 hover:underline text-xs truncate">
+    <a href={liveUrl} target="_blank" rel="noreferrer" className="hidden sm:block max-w-[220px] lg:max-w-[300px] text-green-400 hover:underline text-xs truncate">
       {liveUrl}
     </a>
 
-    <button onClick={() => { navigator.clipboard.writeText(liveUrl); alert("Link copied!");setLiveUrl(""); }} className="bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded text-xs">
+    <button onClick={() => { navigator.clipboard.writeText(liveUrl); alert("Link copied!");setLiveUrl(""); }} className="px-3.5 py-1 bg-blue-800 hover:bg-blue-600 text-white px-2 py-1 rounded text-xs">
       Copy
     </button>
 
@@ -264,7 +265,93 @@ const handleDeploy = async () => {
 
 
          </div> 
-        
+      <div className="sm:hidden flex justify-end flex-1 text-xs">
+
+  {!showMenu ? (
+
+    <div className="flex items-center gap-2">
+
+      {/* Save */}
+      <button
+        onClick={saveProject}
+        disabled={isSaving}
+        className="bg-gray-800 text-white px-3.5 py-1 rounded border border-gray-700"
+      >
+        {isSaving ? "..." : "Save"}
+      </button>
+
+      {/* Preview */}
+      <Link
+        target="_blank"
+        to={`/preview/${projectId}`}
+        className="px-4 py-1 rounded border border-gray-700 text-white"
+      >
+        Preview
+      </Link>
+
+      {/* More */}
+      <button
+        onClick={() => setShowMenu(true)}
+        className="bg-gray-800 text-white px-3 py-1 rounded"
+      >
+        More
+      </button>
+
+    </div>
+
+  ) : (
+
+    <div className="flex items-center gap-2">
+
+      {/* Download */}
+      <button
+        onClick={downloadCode}
+        className="bg-blue-700 text-white px-3 py-1 rounded"
+      >
+        Download
+      </button>
+
+      {/* Publish */}
+      <button
+        onClick={togglePublish}
+        className="bg-blue-700 text-white px-3 py-1 rounded"
+      >
+        {project.isPublished ? "Unpublish" : "Publish"}
+      </button>
+
+      {/* Deploy / Copy */}
+      {!liveUrl ? (
+        <button
+          onClick={handleDeploy}
+          className="bg-green-600 text-white px-3 py-1 rounded"
+        >
+          {isloading ? "Deploying..." : "Deploy"}
+        </button>
+      ) : (
+        <button
+          onClick={() => {
+            navigator.clipboard.writeText(liveUrl);
+            setLiveUrl("");
+          }}
+          className="bg-blue-700 text-white px-3 py-1 rounded"
+        >
+          Copy
+        </button>
+      )}
+
+      {/* Back */}
+      <button
+        onClick={() => setShowMenu(false)}
+        className="bg-gray-800 text-white px-3 py-1 rounded"
+      >
+        Back
+      </button>
+
+    </div>
+
+  )}
+
+</div>
        </div>
        <div className='flex-1 flex overflow-hidden'>
                <Sidebar isMenuOpen={isMenuOpen} project={project} setProject={(p)=>{setProject(p)}} isGenerating={isGenerating} setIsGenerating={setIsGenerating} />
