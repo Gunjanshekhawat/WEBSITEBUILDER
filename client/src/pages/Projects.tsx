@@ -252,7 +252,7 @@ const handleDeploy = async () => {
       {liveUrl}
     </a>
 
-    <button onClick={() => { navigator.clipboard.writeText(liveUrl); alert("Link copied!"); }} className="bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded text-xs">
+    <button onClick={() => { navigator.clipboard.writeText(liveUrl); alert("Link copied!");setLiveUrl(""); }} className="bg-gray-800 hover:bg-gray-700 text-white px-2 py-1 rounded text-xs">
       Copy
     </button>
 
