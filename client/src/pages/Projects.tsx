@@ -249,7 +249,7 @@ const handleDeploy = async () => {
     {liveUrl && (
   <div className="flex items-center gap-3 bg-gray-900 border border-gray-700 px-3 py-2 rounded mt-2">
     
-    <a href={liveUrl} target="_blank" rel="noreferrer" className="hidden sm:block max-w-[220px] lg:max-w-[300px] text-green-400 hover:underline text-xs truncate">
+    <a href={liveUrl} target="_blank" rel="noreferrer" className="hidden sm:block max-w-[150px] lg:max-w-[200px] text-green-400 hover:underline text-xs truncate">
       {liveUrl}
     </a>
 
