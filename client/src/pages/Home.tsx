@@ -40,7 +40,7 @@ function Home() {
 
 
   return (
- <section className="flex flex-col items-center text-white text-sm   px-4 sm:px-6 lg:px-10 mt-8 sm:mt-12 lg:mt-24 max-w-7xl mx-auto font-poppins">
+ <section className="flex flex-col items-center text-white text-sm   px-4 sm:px-6 lg:px-8 mt-8 sm:mt-12 lg:mt-24 max-w-7xl mx-auto font-poppins">
          
 
         <h1 className="text-center text-3xl sm:text-4xl md:text-5xl lg:text-6xl leading-tight md:leading-[70px] mt-4 sm:mt-8 font-semibold max-w-3xl mx-auto">
