@@ -231,24 +231,24 @@ const handleDeploy = async () => {
                     flex items-center gap-2 rounded sm:rounded-sm transition-colors'><ArrowBigDownDashIcon   className='hidden sm:block' size={16}/>Download</button>
  <button onClick={togglePublish} className='bg-linear-to-br from-blue-700 to-blue-600 hover:from-blue-600 hover:to-blue-500 text-white px-3.5 py-1 flex items-center gap-2 rounded sm:rounded-sm transition-colors'>{project.isPublished? <EyeOffIcon size={16}/>: <EyeIcon size={16}/>}{project.isPublished ? "Unpublish":"Publish"}</button>
             
-    <button  onClick={handleDeploy}  disabled={isloading} className='bg-linear-to-br from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white px-3.5 py-1 flex items-center gap-2 rounded sm:rounded-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+ {!liveUrl && <button  onClick={handleDeploy}  disabled={isloading} className='bg-linear-to-br from-green-600 to-green-500 hover:from-green-500 hover:to-green-400 text-white px-3.5 py-1 flex items-center gap-2 rounded sm:rounded-sm transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
 >
-  {isloading ? (
-    <>
-      <Loader2Icon className='animate-spin' size={16} />
-      Deploying...
-    </>
-  ) : (
-    <>
-      <RocketIcon   className='hidden sm:block' size={16} />
-      Deploy
-    </>
-  )}
-</button>
+{isloading ? (
+  <>
+    <Loader2Icon className='animate-spin' size={16} />
+    Deploying...
+  </>
+) : (
+  <>
+    <RocketIcon   className='hidden sm:block' size={16} />
+    Deploy
+  </>
+)}
+</button>}
     {liveUrl && (
   <div className="flex items-center gap-3 bg-gray-900 border border-gray-700 px-3 py-2 rounded mt-2">
     
-    <a href={liveUrl} target="_blank" rel="noreferrer" className="text-green-400 hover:underline text-xs truncate">
+    <a href={liveUrl} target="_blank" rel="noreferrer" className="hidden sm:block text-green-400 hover:underline text-xs truncate">
       {liveUrl}
     </a>
 
